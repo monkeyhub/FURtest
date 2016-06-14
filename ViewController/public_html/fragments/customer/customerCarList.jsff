@@ -1,0 +1,327 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces" xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelGroupLayout id="pgl12">
+        <af:spacer width="10" height="15" id="s7"/>
+        <af:panelStretchLayout id="psl1" endWidth="480px" styleClass="CarListLayout">
+            <f:facet name="start"/>
+            <f:facet name="end"/>
+            <f:facet name="top"/>
+            <f:facet name="bottom"/>
+            <f:facet name="center">
+                <af:panelGroupLayout layout="horizontal" id="pgl11">
+                    <af:panelGroupLayout id="pgl4"
+                                         styleClass="WBDisplayBlock WBDisplayBlockMargin WBDashboardCardSize WBDashboardCard">
+                        <af:panelGroupLayout id="pgl1" layout="vertical">
+                            <af:outputFormatted value="My CAR Status" id="of1" styleClass="WBDashboardCardTitle"/>
+                            <af:spacer height="30px" id="s2"/>
+                            <af:panelGridLayout id="pglbdgs">
+                                <af:gridRow id="grbdgs1">
+                                    <af:gridCell id="gcbdgs1" width="50%" halign="stretch">
+                                        <af:panelGroupLayout id="pgltm1" halign="center" layout="vertical">
+                                            <af:image source="/resources/images/GreenTrain.jpg" shortDesc="Active CARs"
+                                                      styleClass="WBDashboardCardIcon" id="im1"
+                                                      inlineStyle="width:128px; height:128px;"/>
+                                            <af:outputText id="groupBadge" value="118"
+                                                           styleClass="WBDashboardCardBadge"/>
+                                        </af:panelGroupLayout>
+                                    </af:gridCell>
+                                    <af:gridCell id="gcbdgs2" width="50%" halign="stretch">
+                                        <af:panelGroupLayout id="pgltm2" halign="center" layout="vertical">
+                                            <af:image source="/resources/images/Maintenance.png"
+                                                      styleClass="WBDashboardCardIcon" shortDesc="Inactive CARs" id="i2"
+                                                      inlineStyle="width:128px; height:128px;"/>
+                                            <af:outputText id="directBadge" value="21"
+                                                           styleClass="WBDashboardCardBadge"/>
+                                        </af:panelGroupLayout>
+                                    </af:gridCell>
+                                </af:gridRow>
+                                <af:gridRow id="grbdgs2" marginTop="10px">
+                                    <af:gridCell id="gcbdgs3" halign="center">
+                                        <af:outputText id="groupLbl" value="Active CARs" styleClass="WBDashboardLabel"/>
+                                    </af:gridCell>
+                                    <af:gridCell id="gcbdgs4" halign="center">
+                                        <af:outputText id="directLbl" value="Inactive CARs"
+                                                       styleClass="WBDashboardLabel"/>
+                                    </af:gridCell>
+                                </af:gridRow>
+                            </af:panelGridLayout>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl5" layout="vertical">
+                        <af:panelBox id="pb1" text="Maintenance Minder" showDisclosure="false"
+                                     styleClass="MaintenanceMinderPanelBox" inlineStyle="margin-right: 5px;">
+                            <f:facet name="toolbar"/>
+                            <af:panelGroupLayout id="pb3" styleClass="MaintenanceMinderPgl" layout="vertical">
+                                <af:iterator id="i1" value="#{viewScope.CustomerManagedBean.maintenanceMinder}"
+                                             var="row" varStatus="vs">
+                                    <af:panelGroupLayout id="pgl2" layout="horizontal">
+                                        <af:outputText id="ot3" value="#{row.car}"
+                                                       styleClass="#{vs.index == 0 ? 'CarIdColor' : vs.index == 1 ? 'DueDateColor' : vs.index == 2 ? 'MonthsLeftColor' : 'DefaultTextColor' }"/>
+                                        <af:spacer width="20" height="10" id="s5"/>
+                                        <af:outputText id="ot1" value="#{row.dueOnDate}"
+                                                       styleClass="#{vs.index == 0 ? 'CarIdColor' : vs.index == 1 ? 'DueDateColor' : vs.index == 2 ? 'MonthsLeftColor' : 'DefaultTextColor' }"/>
+                                        <af:spacer width="20" height="10" id="s6"/>
+                                        <af:outputText id="ot2" value="#{row.colorFlag}"
+                                                       styleClass="#{vs.index == 0 ? 'CarIdColor' : vs.index == 1 ? 'DueDateColor' : vs.index == 2 ? 'MonthsLeftColor' : 'DefaultTextColor' }"/>
+                                    </af:panelGroupLayout>
+                                    <af:separator id="s8" styleClass="Seperator"/>
+                                </af:iterator>
+                            </af:panelGroupLayout>
+                        </af:panelBox>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl6" layout="vertical">
+                        <af:panelBox id="pb2" showDisclosure="false" text="Expenses Incurred in Last 6 Months"
+                                     styleClass="ExpenseIncurredPanelBox">
+                            <f:facet name="toolbar"/>
+                            <af:panelGroupLayout id="pgl3" styleClass="ExpensesIncurredPgl" layout="vertical">
+                                <!--<dvt:lineGraph id="chart1"
+                                               tabularData="#{viewScope.CustomerManagedBean.expenseIncurredList}"
+                                               shortDesc="Line Graph" animationOnDisplay="transitionToRight"
+                                               inlineStyle="height:260px; width:370px;"/>-->
+                                <dvt:barGraph id="bg1"
+                                              tabularData="#{viewScope.CustomerManagedBean.expenseIncurredList}"
+                                              shortDesc="Expense Incurred" inlineStyle="height:260px; width:300px;"
+                                              animationOnDisplay="zoom" threeDEffect="true">
+                                    <dvt:seriesSet defaultColor="#0094e7"/>
+                                    <dvt:legendArea rendered="false"/>
+                                </dvt:barGraph>
+                            </af:panelGroupLayout>
+                        </af:panelBox>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </f:facet>
+        </af:panelStretchLayout>
+        <af:spacer width="10" height="15" id="s18"/>
+        <af:panelBox id="pb4" text="Invoice Status" showDisclosure="false" styleClass="InvoicePanelBox"
+                     inlineStyle="margin-right: 5px;">
+            <af:panelGridLayout id="pgl14">
+                <af:gridRow marginTop="5px" height="auto" id="gr5">
+                    <af:gridCell width="50%" id="gc14">
+                        <af:panelGroupLayout id="pgl15" styleClass="WBDisplayBlock TotalBox">
+                            <af:panelGroupLayout id="pgl16" layout="vertical" halign="center"
+                                                 inlineStyle="height:75px;">
+                                <af:spacer height="35" id="s4"/>
+                                <af:outputText value="Total Open" id="ot4" styleClass="CarListData"/>
+                                <af:spacer height="5" id="s9"/>
+                                <af:outputText value="$143,000.00" id="ot5" styleClass="CarListId"
+                                               inlineStyle="font-size:16px;"/>
+                            </af:panelGroupLayout>
+                            <af:separator id="s10" styleClass="AFStretchWidth"/>
+                            <af:panelGroupLayout id="pgl18" layout="vertical" halign="center"
+                                                 inlineStyle="height:120px;">
+                                <af:spacer height="35" id="s11"/>
+                                <af:panelGroupLayout id="pgl17" layout="horizontal">
+                                    <af:outputText value="Total Paid Amount" id="ot6" styleClass="CarListData"/>
+                                    <af:spacer width="5" id="s13"/>
+                                    <af:image source="/resources/images/help_icon.png" id="i3">
+                                        <af:showPopupBehavior popupId="::p1" align="endAfter" triggerType="mouseHover"/>
+                                    </af:image>
+                                </af:panelGroupLayout>
+                                <af:spacer height="5" id="s12"/>
+                                <af:outputText value="$1,057,000.00" id="ot7" styleClass="CarListId"
+                                               inlineStyle="font-size:16px;"/>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </af:gridCell>
+                    <af:gridCell width="50%" halign="end" id="gc15">
+                        <af:panelGroupLayout id="pgl19" layout="vertical" styleClass="InvoiceGraphBox">
+                            <af:spacer height="10" id="s15"/>
+                            <af:outputText value="Invoices Issued in 2015" id="ot16" styleClass="CarListId"/>
+                            <af:spacer height="10" id="s16"/>
+                            <dvt:barGraph id="graph1" tabularData="#{viewScope.CustomerManagedBean.invoiceList}"
+                                          shortDesc="Bar Graph" inlineStyle=" width:700px;height:200px;"
+                                          animationOnDisplay="zoom">
+                                <dvt:seriesSet>
+                                    <dvt:series index="0" color="#00a500"/>
+                                    <dvt:series index="1" color="#ff6363"/>
+                                </dvt:seriesSet>
+                            </dvt:barGraph>
+                        </af:panelGroupLayout>
+                    </af:gridCell>
+                </af:gridRow>
+            </af:panelGridLayout>
+            <af:spacer width="10" height="20" id="s17"/>
+            <af:panelGridLayout id="pgl13">
+                <af:gridRow marginTop="5px" height="auto" id="gr4">
+                    <af:gridCell width="20%" id="gc12">
+                        <af:button text="+ New Invoice" id="b1" styleClass="primaryButton"/>
+                    </af:gridCell>
+                    <af:gridCell width="60%" id="gc13"/>
+                    <af:gridCell width="20%" halign="end" id="gc11">
+                        <af:panelGroupLayout id="pgl39" layout="horizontal" styleClass="SearchBox">
+                            <af:spacer width="5" id="s14"/>
+                            <af:link text="" id="l1" icon="/resources/images/Search-gray.png"/>
+                            <af:inputText value="Search by invoice ID" id="it1"
+                                          contentStyle="background:transparent;border:none;outline:none;color:#AAAAAA;"/>
+                        </af:panelGroupLayout>
+                    </af:gridCell>
+                </af:gridRow>
+            </af:panelGridLayout>
+            <af:spacer width="10" height="20" id="s3"/>
+            <af:panelStretchLayout id="psl2" styleClass="InvoiceLayout">
+                <f:facet name="start"/>
+                <f:facet name="end"/>
+                <f:facet name="top"/>
+                <f:facet name="bottom"/>
+                <f:facet name="center">
+                    <af:panelTabbed id="pt1" styleClass="AFStretchWidth InvoiceGridPanelTab">
+                        <af:showDetailItem id="tab1" text="Open" disclosed="true"
+                                           styleClass="AFStretchWidth OpenInvoiceGridPanelTab">
+                            <af:panelGroupLayout id="pgl20" layout="vertical">
+                                <af:panelGridLayout id="pgl21" styleClass="InvoiceGrid">
+                                    <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr6">
+                                        <af:gridCell marginStart="5px" width="30%" id="gc16">
+                                            <af:outputText value="Status" id="ot17" styleClass="CarListId"/>
+                                        </af:gridCell>
+                                        <af:gridCell marginStart="5px" width="30%" id="gc17">
+                                            <af:outputText value="Issue Date" id="ot18" styleClass="CarListId"/>
+                                        </af:gridCell>
+                                        <af:gridCell marginStart="5px" width="30%" id="gc18">
+                                            <af:outputText value="ID" id="ot19" styleClass="CarListId"/>
+                                        </af:gridCell>
+                                        <af:gridCell marginStart="15px" width="30%" marginEnd="5px" id="gc19">
+                                            <af:outputText value="Description" id="ot20" styleClass="CarListId"/>
+                                        </af:gridCell>
+                                        <af:gridCell marginStart="15px" width="10%" marginEnd="5px" id="gc20">
+                                            <af:outputText value="Balance" id="ot21" styleClass="CarListId"/>
+                                        </af:gridCell>
+                                    </af:gridRow>
+                                </af:panelGridLayout>
+                                <af:listView id="lv2" var="row" value="#{viewScope.CustomerManagedBean.openInvoices}"
+                                             selection="single" varStatus="vs">
+                                    <af:listItem id="li2">
+                                        <af:panelGridLayout id="pgl22">
+                                            <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr7">
+                                                <af:gridCell marginStart="5px" width="30%" id="gc21">
+                                                    <af:outputText value="#{row.status}" id="ot22"
+                                                                   styleClass="CarListData"/>
+                                                </af:gridCell>
+                                                <af:gridCell marginStart="5px" width="30%" id="gc22">
+                                                    <af:outputText value="#{row.issueDate}" id="ot24"
+                                                                   styleClass="CarListData"/>
+                                                </af:gridCell>
+                                                <af:gridCell marginStart="5px" width="30%" id="gc23">
+                                                    <af:outputText value="#{row.id}" id="ot25"
+                                                                   styleClass="CarListData"/>
+                                                </af:gridCell>
+                                                <af:gridCell marginStart="15px" width="30%" marginEnd="5px" id="gc24">
+                                                    <af:outputText value="#{row.description}" id="ot26"
+                                                                   styleClass="CarListData"/>
+                                                </af:gridCell>
+                                                <af:gridCell marginStart="15px" width="10%" marginEnd="5px" id="gc25">
+                                                    <af:outputText value="$#{row.balanceAmount}" id="ot27"
+                                                                   styleClass="CarListData"/>
+                                                </af:gridCell>
+                                            </af:gridRow>
+                                        </af:panelGridLayout>
+                                    </af:listItem>
+                                </af:listView>
+                            </af:panelGroupLayout>
+                        </af:showDetailItem>
+                        <af:showDetailItem id="tab2" text="All Invoices"
+                                           styleClass="AFStretchWidth AllInvoiceGridPanelTab">
+                            <af:panelGroupLayout id="pgl24" layout="vertical">
+                                <af:panelGridLayout id="pgl25" styleClass="InvoiceGrid">
+                                    <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr10">
+                                        <af:gridCell marginStart="5px" width="20%" id="gc35">
+                                            <af:outputText value="Status" id="ot37" styleClass="CarListId"/>
+                                        </af:gridCell>
+                                        <af:gridCell marginStart="5px" width="20%" id="gc34">
+                                            <af:outputText value="Issue Date" id="ot36" styleClass="CarListId"/>
+                                        </af:gridCell>
+                                        <af:gridCell marginStart="5px" width="20%" id="gc33">
+                                            <af:outputText value="ID" id="ot34" styleClass="CarListId"/>
+                                        </af:gridCell>
+                                        <af:gridCell marginStart="15px" width="20%" marginEnd="5px" id="gc32">
+                                            <af:outputText value="Description" id="ot35" styleClass="CarListId"/>
+                                        </af:gridCell>
+                                        <af:gridCell marginStart="15px" width="20%" marginEnd="5px" id="gc31">
+                                            <af:outputText value="Balance" id="ot33" styleClass="CarListId"/>
+                                        </af:gridCell>
+                                    </af:gridRow>
+                                </af:panelGridLayout>
+                                <af:listView id="lv3" var="row" value="#{viewScope.CustomerManagedBean.allInvoices}"
+                                             selection="single" varStatus="vs">
+                                    <af:listItem id="li3">
+                                        <af:panelGridLayout id="pgl23">
+                                            <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr8">
+                                                <af:gridCell marginStart="5px" width="20%" id="gc30">
+                                                    <af:outputText value="#{row.status}" id="ot32"
+                                                                   styleClass="CarListData"/>
+                                                </af:gridCell>
+                                                <af:gridCell marginStart="5px" width="20%" id="gc29">
+                                                    <af:outputText value="#{row.issueDate}" id="ot31"
+                                                                   styleClass="CarListData"/>
+                                                </af:gridCell>
+                                                <af:gridCell marginStart="5px" width="20%" id="gc28">
+                                                    <af:outputText value="#{row.id}" id="ot30"
+                                                                   styleClass="CarListData"/>
+                                                </af:gridCell>
+                                                <af:gridCell marginStart="15px" width="20%" marginEnd="5px" id="gc27">
+                                                    <af:outputText value="#{row.description}" id="ot28"
+                                                                   styleClass="CarListData"/>
+                                                </af:gridCell>
+                                                <af:gridCell marginStart="15px" width="20%" marginEnd="5px" id="gc26">
+                                                    <af:outputText value="$#{row.balanceAmount}" id="ot29"
+                                                                   styleClass="CarListData"/>
+                                                </af:gridCell>
+                                            </af:gridRow>
+                                        </af:panelGridLayout>
+                                    </af:listItem>
+                                </af:listView>
+                            </af:panelGroupLayout>
+                        </af:showDetailItem>
+                    </af:panelTabbed>
+                </f:facet>
+            </af:panelStretchLayout>
+        </af:panelBox>
+        <af:spacer width="10" height="15" id="s1"/>
+        <af:panelGroupLayout id="pgl10" layout="vertical" inlineStyle="width:1000px;">
+            <af:panelGridLayout id="pgl9">
+                <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr3">
+                    <af:gridCell marginStart="5px" width="25%" id="gc7">
+                        <af:outputText value="Car ID" id="ot12" styleClass="CarListHeader "/>
+                    </af:gridCell>
+                    <af:gridCell marginStart="5px" width="25%" id="gc8">
+                        <af:outputText value="Car Initial Car #" id="ot13" styleClass="CarListHeader "/>
+                    </af:gridCell>
+                    <af:gridCell marginStart="5px" width="25%" id="gc9">
+                        <af:outputText value="Status" id="ot14" styleClass="CarListHeader "/>
+                    </af:gridCell>
+                    <af:gridCell marginStart="15px" width="25%" marginEnd="5px" id="gc10">
+                        <af:outputText value="Mileage" id="ot15" styleClass="CarListHeader "/>
+                    </af:gridCell>
+                </af:gridRow>
+            </af:panelGridLayout>
+            <af:listView id="lv1" var="row" value="#{viewScope.CustomerManagedBean.carBean}" selection="single"
+                         selectionListener="#{viewScope.CustomerManagedBean.carDetails}" varStatus="vs">
+                <f:facet name="groupHeaderStamp"/>
+                <af:listItem id="li1">
+                    <af:panelGridLayout id="pgl8">
+                        <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr2">
+                            <af:gridCell marginStart="5px" width="25%" id="gc3">
+                                <af:outputText value="#{row.carID}" id="ot8" styleClass="CarListId"/>
+                            </af:gridCell>
+                            <af:gridCell marginStart="5px" width="25%" id="gc4">
+                                <af:outputText value="#{row.initialCarNo}" id="ot9" styleClass="CarListData"/>
+                            </af:gridCell>
+                            <af:gridCell marginStart="5px" width="25%" id="gc5">
+                                <af:outputText value="#{row.status}" id="ot10"
+                                               styleClass="#{row.status eq 'Active' ? 'Active' : row.status eq 'Under Maintenance' ? 'UnderMaintenance': row.status eq 'Inactive' ? 'Inactive' : 'ActiveRunning' } Status"/>
+                            </af:gridCell>
+                            <af:gridCell marginStart="15px" width="25%" marginEnd="5px" id="gc6">
+                                <af:outputText value="#{row.mileage}" id="ot11" styleClass="CarListData"/>
+                            </af:gridCell>
+                        </af:gridRow>
+                    </af:panelGridLayout>
+                </af:listItem>
+            </af:listView>
+        </af:panelGroupLayout>
+        <af:popup id="p1" contentDelivery="lazyUncached">
+            <af:panelGroupLayout layout="vertical" halign="center" inlineStyle="border:1px  #AAAAAA;" id="pgl61">
+                <af:outputText id="ot23" value="Total Paid Amount" styleClass="CarListId"/>
+            </af:panelGroupLayout>
+        </af:popup>
+    </af:panelGroupLayout>
+</ui:composition>

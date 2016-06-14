@@ -1,0 +1,10 @@
+<?xml version = '1.0' standalone = 'yes' ?>
+<ojdeploy-build>
+  <deploy>
+    <parameter name="workspace" value="C:\keste\FURCustomFeaturesADFApp_v10\FURCustomFeaturesADFApp\FURCustomFeaturesADFApp_v10.jws"/>
+    <parameter name="project" value="ViewController"/>
+    <parameter name="profile" value="*"/>
+    <parameter name="nocompile" value="false"/>
+    <parameter name="outputfile" value="C:\keste\FURCustomFeaturesADFApp_v10\FURCustomFeaturesADFApp\ViewController\deploy\${profile.name}"/>
+  </deploy>
+</ojdeploy-build>

@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces" xmlns:f="http://java.sun.com/jsf/core">
+    <!--<af:resource type="javascript" source="http://maps.google.com/maps/api/js?sensor=false"/>--> 
+    <af:spacer height="10" id="s4"/>
+    <af:link text="&lt; Back to My CARs" id="l1" action="back" styleClass="BackLink"/>
+    <af:spacer height="15" id="s1"/>
+    <af:outputFormatted id="ot1" value="CAR Details for Car ID # #{pageFlowScope.carBean.carID}"
+                        styleClass="CarDetailsOutputtext"/>
+    <af:panelStretchLayout id="psl1" inlineStyle="margin-right: 10px" styleClass="CarListLayout">
+        <f:facet name="start"/>
+        <f:facet name="end"/>
+        <f:facet name="top"/>
+        <f:facet name="bottom"/>
+        <f:facet name="center">
+          <af:panelGroupLayout layout="horizontal" id="pgl1" valign="top">
+            <af:panelBox text="Repair History" id="pb2" styleClass="RepairHistoryPanelBox" showDisclosure="false">
+                <f:facet name="toolbar"/>
+                <af:panelGroupLayout id="pgl2" layout="vertical" styleClass="RepairHistoryPgl">
+                    <dvt:barGraph id="graph1" tabularData="#{viewScope.CustomerManagedBean.repairHistoryList}"
+                                  threeDEffect="true" shortDesc="Bar Graph" inlineStyle=" width:320px;"
+                                  animationOnDisplay="zoom">
+                    </dvt:barGraph>
+                </af:panelGroupLayout>
+            </af:panelBox>
+            <af:panelBox text="Maintenance Minder" id="pb4" styleClass="MaintenanceMinderDetailsPanelBox"
+                         showDisclosure="false" inlineStyle="margin-left: 5px;margin-right: 5px;">
+                <f:facet name="toolbar"/>
+                <af:panelGroupLayout id="pb3" styleClass="MaintenanceMinderDetailsPgl" layout="vertical">
+                    <af:spacer height="10" id="s5"/>
+                    <af:panelGroupLayout id="pgl9" layout="horizontal" halign="center">
+                        <af:image source="/resources/images/Reminder.png" id="i1" shortDesc="Maintenance Minder"
+                              inlineStyle="height:80px; width:80px"/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl3" layout="horizontal" halign="center">
+                        <af:outputText value="Due on" id="ot2" styleClass="MaintenanceMinderDetails"/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl5" layout="horizontal" halign="center">
+                        <af:outputText value="04/06/2016" id="ot3" styleClass="MaintenanceMinderDetails"/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl7" layout="horizontal" halign="center"
+                                         styleClass="MaintenanceMinderDetails1">
+                        <af:outputText value="#{pageFlowScope.carBean.status eq 'Active' ? '9 days left' : pageFlowScope.carBean.status eq 'Inactive(Dont own anymore)' ? 'Over Due' :'3 months left'}"
+                                       id="ot5"/>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl6" layout="horizontal" halign="center"
+                                         styleClass="MaintenanceMinderDetails2">
+                        <af:outputText value="#{pageFlowScope.carBean.status}" id="ot4"/>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+            </af:panelBox>
+            <af:panelBox text="Latest Sighting" id="pb5"  showDisclosure="false" styleClass="LatestSitingPanelBox" >
+                <f:facet name="toolbar"/>
+                <af:panelGroupLayout id="pgl4" styleClass="LatestSitingDetailsPgl" layout="vertical">
+                    <div id="map" style="width:320px; height:330px;">                         
+                    </div>
+                </af:panelGroupLayout>
+            </af:panelBox>
+          </af:panelGroupLayout>
+        </f:facet>
+    </af:panelStretchLayout>
+   
+    <af:spacer width="10" height="10" id="s2"/>
+    <af:panelBox text="Car Details" id="pb1" showDisclosure="false" styleClass="CarDetailsPanelBox">
+        <af:spacer width="10" height="10" id="s3"/>
+            <af:panelGroupLayout id="pgl8" layout="vertical" halign="center" >
+            <af:panelFormLayout id="pfl1" >
+                <af:panelLabelAndMessage label="Car Id" id="plam1">
+                    <af:outputText value="#{pageFlowScope.carBean.carID}" id="ot9" styleClass="CarDetailsData"/>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="Car Initial car#" id="plam2">
+                    <af:outputText value="#{pageFlowScope.carBean.initialCarNo}" id="ot10" styleClass="CarDetailsData"/>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="Re-sensed(Y/N)" id="plam3">
+                    <af:outputText value="#{pageFlowScope.carBean.resensed}" id="ot6" styleClass="CarDetailsData"/>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="Contract End Date" id="plam4">
+                    <af:outputText value="#{pageFlowScope.carBean.contractDate}" id="ot7" styleClass="CarDetailsData"/>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="Contract Document" id="plam5">
+                    <af:goLink targetFrame="_blank" destination="http://ovm1072.keste.com:16200/cs/groups/public/documents/document/zwnv/mdax/~edisp/ovm1072kesteco001002.pdf"  text="Link to Contract Document" id="ot8" styleClass="CarDetailsLink"/>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="Current Mileage" id="plam6">
+                    <af:outputText value="#{pageFlowScope.carBean.mileage}" id="ot13" styleClass="CarDetailsData"/>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="Current Location" id="plam7">
+                    <af:outputText value="[#{pageFlowScope.carBean.latitude}, #{pageFlowScope.carBean.longitude}]" id="ot12" styleClass="CarDetailsData"/>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="Status" id="plam8">
+                    <af:outputText value="#{pageFlowScope.carBean.status}" id="ot11" styleClass="CarDetailsData"/>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="Expense Incurred" id="plam9">
+                    <af:outputText value="#{pageFlowScope.carBean.expenseIncurred}" id="ot14" styleClass="CarDetailsData"/>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="Total # Inactive days" id="plam10">
+                    <af:outputText value="#{pageFlowScope.carBean.numInactiveDays}" id="ot15" styleClass="CarDetailsData"/>
+                </af:panelLabelAndMessage>
+                <f:facet name="footer"/>
+            </af:panelFormLayout>
+            </af:panelGroupLayout>
+        <f:facet name="toolbar"/>
+        <af:resource type="javascript" source="http://maps.google.com/maps/api/js?sensor=false"/> 
+        <af:resource type="javascript"> 
+        var infowindow = new google.maps.InfoWindow();
+        var mapOptions = {
+            zoom: 8,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map;
+        function initialize(latitude, longitude) { 
+            //alert('latitude='+latitude+';;; longitude='+longitude); 
+            setTimeout(function(){  }, 3000);
+            //alert('latitude='+latitude+';;; longitude='+longitude);
+            map = new google.maps.Map(document.getElementById("map"), mapOptions);
+            map.setCenter(new google.maps.LatLng(latitude, longitude), 1);
+            createCenterMarker(latitude, longitude);
+        }           
+        
+         function createCenterMarker(latitude, longitude) {
+          //alert('createCenterMarker latitude='+latitude+';;; longitude='+longitude);
+          //alert('createCenterMarker latitude='+latitude+';;; longitude='+longitude); 
+           setTimeout(function(){  }, 3000);                   
+           var contentString = "Search Location";
+           var marker = new google.maps.Marker({
+             position: new google.maps.LatLng(latitude, longitude),
+             map: map
+             //, icon: 'images/center_marker.png'
+           });
+        
+          google.maps.event.addListener(marker, 'click', function() {
+             infowindow.setContent(contentString); 
+             infowindow.open(map,marker);
+           });         
+         }
+	 //initialize(30.05807, -97.42539);
+    </af:resource>
+    <af:outputText value="#{viewScope.CustomerManagedBean.visisbleText}" id="locationsId"
+                   clientComponent="true" visible="false"/>
+    </af:panelBox>
+</ui:composition>

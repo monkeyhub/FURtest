@@ -1,0 +1,20 @@
+<References xmlns="http://xmlns.oracle.com/adf/jndi">
+  <Reference name="FurWCConn" className="oracle.webcenter.assetpublishing.connection.rc.model.PortalServerConnection"
+             credentialStoreKey="FurWCConn" xmlns="">
+    <Factory className="oracle.webcenter.assetpublishing.connection.rc.model.PortalServerConnectionFactory"/>
+    <RefAddresses>
+      <XmlRefAddr addrType="FurWCConn">
+        <Contents>
+          <portalserverconnection name="FurWCConn" url="http://ovm1072.keste.com:8888/rest/api/v1/resourceIndex">
+            <authentication style="challange">
+              <type>basic</type>
+              <realm>REST</realm>
+            </authentication>
+          </portalserverconnection>
+        </Contents>
+      </XmlRefAddr>
+      <SecureRefAddr addrType="password"/>
+      <SecureRefAddr addrType="username"/>
+    </RefAddresses>
+  </Reference>
+</References>

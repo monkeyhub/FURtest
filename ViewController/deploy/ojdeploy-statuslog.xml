@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<ojdeploy-log>
+  <deploy-task>
+    <target>
+      <profile>FURWar</profile>
+      <workspace>/C:/keste/FURCustomFeaturesADFApp_v10/FURCustomFeaturesADFApp/FURCustomFeaturesADFApp_v10.jws</workspace>
+      <project>ViewController.jpr</project>
+    </target>
+    <status exitcode="0">SUCCESS</status>
+  </deploy-task>
+  <deploy-task>
+    <target>
+      <profile>adflibFURCustomApps</profile>
+      <workspace>/C:/keste/FURCustomFeaturesADFApp_v10/FURCustomFeaturesADFApp/FURCustomFeaturesADFApp_v10.jws</workspace>
+      <project>ViewController.jpr</project>
+    </target>
+    <status exitcode="0">SUCCESS</status>
+  </deploy-task>
+  <summary>
+    <start-time>2016-06-14 12:45:37 IST</start-time>
+    <end-time>2016-06-14 12:46:24 IST</end-time>
+    <total-tasks>2</total-tasks>
+    <failures>0</failures>
+    <status exitcode="0">SUCCESS</status>
+  </summary>
+</ojdeploy-log>

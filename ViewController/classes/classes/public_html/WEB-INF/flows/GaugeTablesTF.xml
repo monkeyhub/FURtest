@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="GaugeTablesTF">
+    <default-activity>gaugeTablesSearch</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__5">
+      <managed-bean-name>GaugeSearchManagedBean</managed-bean-name>
+      <managed-bean-class>com.fur.portal.view.backingean.GaugeSearchManagedBean</managed-bean-class>
+      <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <view id="gaugeTablesSearch">
+      <page>/fragments/gauge/gaugeTablesSearch.jsff</page>
+    </view>
+    <view id="gaugeTableSearchNoItems">
+      <page>/fragments/gauge/gaugeTableSearchNoItems.jsff</page>
+    </view>
+    <control-flow-rule id="__1">
+      <from-activity-id>gaugeTablesSearch</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>noItems</from-outcome>
+        <to-activity-id>gaugeTableSearchNoItems</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>gaugeTableSearchNoItems</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>search</from-outcome>
+        <to-activity-id>gaugeTablesSearch</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

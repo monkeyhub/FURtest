@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.2.1.0.31" id="DataBindings"
+             SeparateXMLFiles="false" Package="com.fur.portal.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/GaugeTableSearchTest.jsf" usageId="com_fur_portal_view_GaugeTableSearchTestPageDef"/>
+    <page path="/Customer.jsf" usageId="com_fur_portal_view_CustomerPageDef"/>
+    <page path="/RequestRateQuoteTest.jsf" usageId="com_fur_portal_view_RequestRateQuoteTestPageDef"/>
+    <page path="/fragments/customer/customerCarList.jsff" usageId="com_fur_portal_view_customerCarListPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="com_fur_portal_view_GaugeTableSearchTestPageDef"
+          path="com.fur.portal.view.pageDefs.GaugeTableSearchTestPageDef"/>
+    <page id="com_fur_portal_view_CustomerPageDef" path="com.fur.portal.view.pageDefs.CustomerPageDef"/>
+    <page id="com_fur_portal_view_RequestRateQuoteTestPageDef"
+          path="com.fur.portal.view.pageDefs.RequestRateQuoteTestPageDef"/>
+    <page id="com_fur_portal_view_customerCarListPageDef" path="fragments.customer.customerCarListPageDef"/>
+  </pageDefinitionUsages>
+</Application>

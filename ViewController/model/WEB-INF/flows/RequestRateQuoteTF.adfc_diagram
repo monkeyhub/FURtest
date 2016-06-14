@@ -1,0 +1,61 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">requestRateQuote</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">439.03125</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>requestRateQuote&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">246.89062</property>
+      <property
+         name="page">/fragments/quote/requestRateQuote.jsff</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+   <View
+      id="View3">
+      <property
+         name="activityId">rateQuoteConfirm</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">711.6865</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>rateQuoteConfirm&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">248.09766</property>
+      <property
+         name="page">/fragments/quote/rateQuoteConfirm.jsff</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="View2"
+      to="View3">
+      <property
+         name="fromOutcome">confirm</property>
+      <property
+         name="sdm:polyPoints">R46,480.0534,243.04004,670.6865,244.24707,L46</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase5"
+      from="View3"
+      to="View2">
+      <property
+         name="fromOutcome">back</property>
+      <property
+         name="sdm:polyPoints">L54,670.66437,251.24707,480.03125,250.04004,R54</property>
+   </ControlFlowCase>
+</SDM>

@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelGroupLayout id="pgl1" layout="vertical" styleClass="AFStretchWidth">
+        <af:panelFormLayout id="pfl1" labelAlignment="top" styleClass="AFStretchWidth">
+            <af:selectOneChoice label="Railcar Type" id="soc1" contentStyle="width:155px;">
+                <af:selectItem label="Box Car" value="BC" id="si1"/>
+                <af:selectItem label="Autorack" value="AR" id="si2"/>
+                <af:selectItem label="Flat Car" value="FC" id="si3"/>
+            </af:selectOneChoice>
+            <af:inputText label="Commodity" id="it1"/>
+            <af:inputText label="Contact" id="it2"/>
+            <af:inputText label="Company" id="it3"/>
+            <af:inputText label="City" id="it4"/>
+            <af:selectOneChoice label="State/Country" id="soc2" contentStyle="width:155px;">
+                <af:selectItem label="Alabama" value="AL" id="si4"/>
+                <af:selectItem label="Alaska" value="AS" id="si5"/>
+                <af:selectItem label="Texas" value="TX" id="si6"/>
+            </af:selectOneChoice>
+            <af:inputText label="Phone" id="it5"/>
+            <af:inputText label="Email" id="it6"/>
+            <f:facet name="footer">
+                <af:panelGroupLayout id="pgl2" layout="horizontal" halign="right" styleClass="AFStretchWidth">
+                    <af:button text="Submit" id="b1" action="confirm"/>
+                </af:panelGroupLayout>
+            </f:facet>
+        </af:panelFormLayout>
+    </af:panelGroupLayout>
+</ui:composition>

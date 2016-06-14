@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <af:panelGroupLayout id="pgl1" layout="vertical">
+    <af:link text="Back" id="l1" action="back"/>
+    <af:spacer width="10" height="20" id="s1"/>
+    <af:outputFormatted value="Thank you for contacting Wells Fargo Rail for your business needs. Your message has been received. One of our representatives will contact you within 48 business hours with a response to your inquiry." id="of1"/>
+  </af:panelGroupLayout>
+</ui:composition>

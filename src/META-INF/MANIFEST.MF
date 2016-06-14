@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Created-By: sgorantala
+Implementation-Title: test
+Extension-Name: furapp.shared.lib
+Specification-Version: 1.0.0
+Implementation-Version: 1.0.0
+Implementation-Vendor: keste

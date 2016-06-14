@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:spacer width="10" height="30" id="s3"/>
+  <af:panelBox id="pb1" showDisclosure="false">
+    <f:facet name="toolbar"/>
+    <af:panelGroupLayout id="pgl1" layout="vertical">
+      <af:spacer width="10" height="10" id="s1"/>
+      <af:outputText value="The entered car number is not found in our Gauge Table Database." id="ot1"/>
+      <af:spacer width="10" height="10" id="s2"/>
+      <af:link text="Please click here to try another car number." id="l1" action="search"/>
+      <af:spacer width="10" height="10" id="s4"/>
+      <af:outputText escape="false" value="Should your query not provide the results you need, you may contact the Wells Fargo Rail Mechanical Department via phone at 847-318-7575 or via email at gauge.table@wellsfargo.com." id="ot2"/>
+    </af:panelGroupLayout>
+  </af:panelBox>
+</ui:composition>

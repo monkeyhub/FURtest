@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="CustomerTF">
+    <default-activity>customerCarList</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__3">
+      <managed-bean-name>CustomerManagedBean</managed-bean-name>
+      <managed-bean-class>com.fur.portal.view.backingean.CustomerManagedBean</managed-bean-class>
+      <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <view id="customerCarList">
+      <page>/fragments/customer/customerCarList.jsff</page>
+    </view>
+    <view id="customerCarDetails">
+      <page>/fragments/customer/customerCarDetails.jsff</page>
+    </view>
+    <control-flow-rule id="__1">
+      <from-activity-id>customerCarList</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>carDetails</from-outcome>
+        <to-activity-id>customerCarDetails</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__4">
+      <from-activity-id>customerCarDetails</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>customerCarList</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>
+
